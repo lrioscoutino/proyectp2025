@@ -14,3 +14,9 @@ def home(request):
         'message': 'Bienvenido al proyecto de prueba'
     }
     return render(request, 'home.html', context)
+
+def welcome(request):
+    return render(request, "base.html")
+
+def about(request):
+    return render(request, "about.html")
