@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from users.models import Product
+from django.urls import reverse_lazy
 
 # Create your views here.
 
@@ -19,4 +21,26 @@ def welcome(request):
     return render(request, "base.html")
 
 def about(request):
-    return render(request, "about.html")
+    context ={
+        "products": Product.objects.filter(
+            is_active=True
+        )
+    }
+    return render(
+        request,
+        "about.html",
+        context=context
+    )
+
+def create_product(request):
+    if request.method == "GET":
+        return render(
+            request,
+            "product/create.html",
+        )
+    else:
+        product = Product()
+        product.name = request.POST['name_product']
+        product.stock = request.POST['stock_product']
+        product.save()
+        return redirect(reverse_lazy("about"))

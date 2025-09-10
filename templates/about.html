@@ -1,4 +1,27 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>Acerca de la empresa...</h1>
+<a class="btn btn-success" href="{% url 'create-product-view' %}">Agregar</a>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Stock</th>
+      <th scope="col">Activo</th>
+    </tr>
+  </thead>
+  <tbody>
+   {% for product in products %}
+    <tr>
+      <th scope="row">{{product.id}}<br></th>
+      <td>{{product.name}}</td>
+      <td>{{product.stock}}</td>
+      <td>{{product.is_active}}</td>
+    </tr>
+{% endfor %}
+    </tbody>
+</table>
+
+
 {% endblock %}

@@ -10,6 +10,10 @@ class Product(models.Model):
     stock = models.IntegerField(default=0)
     is_active = models.BooleanField(default=True)
 
+
+    def __str__(self):
+        return self.name
+
 class DetailProduct(models.Model):
     product = models.ForeignKey(
         Product,
@@ -21,3 +25,5 @@ class DetailProduct(models.Model):
         blank=True,
         null=True
     )
+    def __str__(self):
+        return f"{self.product.name} - {self.description}"
