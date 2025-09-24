@@ -41,4 +41,6 @@ Thumbs.db
 *.cover
 *.coverage
 *.py,co*
+*~
+*.swp
 CLAUDE.md

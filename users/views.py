@@ -44,3 +44,9 @@ def create_product(request):
         product.stock = request.POST['stock_product']
         product.save()
         return redirect(reverse_lazy("about"))
+
+def update_product(request):
+    pass
+
+def delete_product(request):
+    pass

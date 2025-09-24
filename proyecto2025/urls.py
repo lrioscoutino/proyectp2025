@@ -19,6 +19,7 @@ from django.urls import path, include
 from users import urls
 from users.views import welcome, about
 from django.contrib.auth.views import LoginView, LogoutView
+from users.routers import router
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,9 +28,10 @@ urlpatterns = [
          LoginView.as_view(template_name="base.html"),
          name="login"
          ),
-path('logout/',
+    path('logout/',
          LogoutView.as_view(),
          name="logout"
          ),
     path('about/', about, name="about" ),
+    path('api/', include(router.urls)),
 ]
