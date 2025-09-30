@@ -8,9 +8,11 @@ class DetailProductSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 class ProductSerializer(serializers.ModelSerializer):
+    products = DetailProductSerializer(many=True, read_only=True)
+
     class Meta:
         model = Product
-        fields = ("name", "stock", "is_active",)
+        fields = ("name", "stock", "is_active", "products")
 
 class LoginSerializer(serializers.Serializer):
     username = serializers.CharField(required=True)
